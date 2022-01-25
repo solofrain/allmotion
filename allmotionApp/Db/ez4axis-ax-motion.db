@@ -25,7 +25,8 @@ record(calcout, "$(P){$(Q)-Ax:$(AX)}Pos-SP-RAW") {
 record(ai, "$(P){$(Q)-Ax:$(AX)}Pos-RB-RAW") {
     field(DTYP, "stream")
     field(INP,  "@ez4axis.proto getAx$(AX)Pos( $(ADDR), ?aA) $(PORT)")
-    field(SCAN, "2 second")
+#    field(SCAN, "2 second")
+    field(SCAN, "I/O Intr")
     field(EGU,  "cts")
     field(FLNK, "$(P){$(Q)-Ax:$(AX)}Pos-RB")
 }
@@ -81,19 +82,30 @@ record(calcout, "$(P){$(Q)-Ax:$(AX)}TWR") {
 
 #-----------------------------------------
 # Position save/load
-record(ai, "$(P){$(Q)-Ax:$(AX)}PosSave") {
-    field(INP, "$(P){$(Q)-Ax:$(AX)}Pos-RB")
-#    field(CALC, "A")
+
+record(dfanout, "$(P){$(Q)-Ax:$(AX)}PosSave-Enable") {
+    field(DOL, "$(P){$(Q)-Ax:$(AX)}Pos-RB")
+    field(OUTA	, "$(P){$(Q)-Ax:$(AX)}PosSave.VAL PP")
+#    field(DOL,  "@ez4axis.proto setAxParam($(ADDR), $(AX), z) $(PORT)")
     field(SCAN, "1 second")
-    field(DISV, 0)
     field(SDIS, "$(P){$(Q)}PosSave-Enable")
+    field(DISV, 0)
+    field(OMSL, "closed_loop")
+}
+
+
+record(ai, "$(P){$(Q)-Ax:$(AX)}PosSave") {
+#    field(INP, "$(P){$(Q)-Ax:$(AX)}Pos-RB")
+#    field(CALC, "A")
+#    field(SCAN, "1 second")
+#    field(DISV, 0)
     info(autosaveFields_pass0, "VAL")
 }
 
 
 record(dfanout, "$(P){$(Q)-Ax:$(AX)}PosLoad") {
-    field(OUTA, "$(P){$(Q)-Ax:$(AX)}PosSave.VAL PP")
-    field(DOL, "$(P){$(Q)-Ax:$(AX)}PosLoad-Out.VAL PP")
+    field(DOL, "$(P){$(Q)-Ax:$(AX)}PosSave.VAL PP")
+    field(OUTA, "$(P){$(Q)-Ax:$(AX)}PosLoad-Out.VAL PP")
 #    field(DOL,  "@ez4axis.proto setAxParam($(ADDR), $(AX), z) $(PORT)")
     field(SCAN, "Passive")
     field(OMSL, "closed_loop")

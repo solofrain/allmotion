@@ -8,8 +8,9 @@ record(bi, "$(P){$(Q)}Enable") {
 
 record(stringin, "$(P){$(Q)}Status-RAW") {
     field(DTYP, "stream")
-    field(INP,  "@ez4axis.proto getDevStsRaw() $(PORT)")
-    field(SCAN, "I/O Intr")
+    field(INP,  "@ez4axis.proto getDevStsRaw($(ADDR)) $(PORT)")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
 }
 
 record(mbbi, "$(P){$(Q)}Status") {
