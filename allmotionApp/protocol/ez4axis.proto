@@ -19,6 +19,11 @@ getAxParam {
     in "\xff\/0`%d"
 }
 
+setAxCmd {
+    out "/\$1aM\$2\$3R";
+    in "\xff\/0@"
+}
+
 #============================================
 
 getDevStsRaw {

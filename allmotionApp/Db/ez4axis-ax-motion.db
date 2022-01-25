@@ -53,10 +53,19 @@ record(ao, "$(P){$(Q)-Ax:$(AX)}StopAll") {
 }
 
 #-----------------------------------------
-# Home negative
-record(ao, "$(P){$(Q)-Ax:$(AX)}HomeNeg-SP") {
-    field(DTYP, "stream")
+# Home
+record(ai "$(P){$(Q)-Ax:$(AX)}HomeDist-SP") {
+#   field(DTYP, "stream")
     field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), Z) $(PORT)")
+}
+
+record(calcout, "$(P){$(Q)-Ax:$(AX)}Home") {
+    field(DTYP, "stream")
+    field(INPA, "$(P){$(Q)-Ax:$(AX)}HomeDist-SP")
+    field(INPB, "$(P){$(Q)-Ax:$(AX)}MRES-SP")
+    field(CALC, "A/B")
+    field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), Z) $(PORT)")
+    field(EGU,  "cts")
 }
 
 #-----------------------------------------
@@ -114,4 +123,30 @@ record(dfanout, "$(P){$(Q)-Ax:$(AX)}PosLoad") {
 record(ao, "$(P){$(Q)-Ax:$(AX)}PosLoad-Out") {
     field(DTYP, "stream")
     field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), z) $(PORT)")
+}
+
+#-----------------------------------------
+# Limit
+record(bi, "$(P){$(Q)-Ax:$(AX)}Limit-Enable") {
+    field(ZNAM, "Disabled")
+    field(ONAM, "Enabled")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(ao, "$(P){$(Q)-Ax:$(AX)}Limit") {
+   field(DTYP, "stream")
+   field(OUT,  "@ez4axis.proto setAxCmd($(ADDR), $(AX), n2) $(PORT)")
+   field(DISV, 0)
+   field(SDIS, "$(P){$(Q)-Ax:$(AX)}Limit-Enable")
+   field(PINI, "YES")
+}
+
+record(bo, "$(P){$(Q)-Ax:$(AX)}Limit-Pol") {
+   field(DTYP, "stream")
+   field(ZNAM, "Normally-closed")
+   field(ONAM, "Normally-open")
+   field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), f) $(PORT)")
+   field(DISV, 0)
+   field(SDIS, "$(P){$(Q)-Ax:$(AX)}Limit-Enable")
+   field(PINI, "YES")
 }
