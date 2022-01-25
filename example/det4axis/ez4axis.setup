@@ -1,0 +1,27 @@
+epicsEnvSet(N, $(TTYUSB$(TTYUSB_INDEX)))
+epicsEnvSet(Dev$(N) , "EZ4:$(N)")
+epicsEnvSet(PORT$(N), "EZ4-$(N)")
+
+#-------------------------------------------------
+## NOTE: RS485 address must match up with the address selected on the device with its address switch:
+epicsEnvSet(ALM_ADDR$(N), $(N))
+#drvAsynSerialPortConfigure("portName","ttyName",priority,noAutoConnect, noProcessEosIn)
+drvAsynSerialPortConfigure("$(PORT$(N))", "/dev/ttyUSB$(TTYUSB_INDEX)", 0, 0, 0)
+
+asynSetOption("$(PORT$(N))", -1, "baud",    "115200") 
+asynSetOption("$(PORT$(N))", -1, "bits",    "8") 
+asynSetOption("$(PORT$(N))", -1, "parity",  "none") 
+asynSetOption("$(PORT$(N))", -1, "stop",    "1") 
+asynSetOption("$(PORT$(N))", -1, "clocal",  "N") 
+asynSetOption("$(PORT$(N))", -1, "crtscts", "N") 
+#
+#asynOctetSetInputEos("$(PORT$(N))", -1, "\r") 
+#asynOctetSetOutputEos("$(PORT$(N))", -1, "\r")
+#
+asynSetTraceMask("$(PORT$(N))", -1, 0x08)
+asynSetTraceIOMask("$(PORT$(N))", -1, 0x1)
+
+
+dbLoadTemplate("motor$(N).substitutions", "Egu1=mm, Egu2=mm, Egu3=mm, Egu4=mm, ADDR=$(N)")
+
+dbLoadRecords("$(ALLMOTION)/db/asynComm.db","P=$(Sys){${Dev$(N)}}, PORT=$(PORT$(N)),ADDR=0")

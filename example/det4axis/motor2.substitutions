@@ -1,0 +1,36 @@
+global {
+    ADDR=2,
+    P="DetStage",
+    Q="EZ4:$(ADDR)",
+    PORT="EZ4-$(ADDR)"
+}
+
+file "$(ALLMOTION)/db/ez4axis-ax-param.db"
+{
+pattern
+{ AX , PARAM       , CMD-SP , CMD-RB , EGU                 }
+{ 1  , "VeloMax"   , "V"    , "?2"   , "$(Egu$(AX))/sec"   }
+{ 1  , "VeloStart" , "v"    , "?1"   , "$(Egu$(AX))/sec"   }
+{ 1  , "VeloStop"  , "c"    , "?3"   , "$(Egu$(AX))/sec"   }
+{ 1  , "Accl"      , "L"    , "?L"   , "$(Egu$(AX))/sec^2" }
+{ 1  , "HoldCurr"  , "h"    , "?h"   , "% (2A)"            }
+{ 1  , "MoveCurr"  , "m"    , "?m"   , "% (2A)"            }
+}
+
+file "$(ALLMOTION)/db/ez4axis-ax-motion.db"
+{
+pattern
+{ AX , EGU  , DESC }
+{ 1  , "$(Egu1)" , "Test X"  }
+{ 2  , "$(Egu2)" , "Y"  }
+{ 3  , "$(Egu3)" , "Z"  }
+{ 4  , "$(Egu4)" , "1"  }
+}
+
+file "$(ALLMOTION)/db/ez4axis.db"
+{
+pattern
+{ ADDR }
+{ 2    }
+}
+
