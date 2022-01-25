@@ -1,0 +1,101 @@
+#===============================================
+# Device enable. Used for position restoration.
+record(bi, "$(P){$(Q)}Enable") {
+}
+
+#===============================================
+# Status
+
+record(stringin, "$(P){$(Q)}Status-RAW") {
+    field(DTYP, "stream")
+    field(INP,  "@ez4axis.proto getDevStsRaw() $(PORT)")
+    field(SCAN, "I/O Intr")
+    field(FLNK, "$(P){$(Q)}ReadyCalc")
+}
+
+record(mbbi, "$(P){$(Q)}Status") {
+    field(DTYP, "stream")
+    field(INP,  "@ez4axis.proto getDevSts($(P), {$(Q)}, $(ADDR)) $(PORT)")
+#    field(INP,  "@ez4axis.proto getDevSts() $(PORT)")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(SVVL, "7")
+    field(EIVL, "8")
+    field(NIVL, "9")
+    field(ZRST, "Ready")
+    field(ONST, "No error")
+    field(TWST, "Init error")
+    field(THST, "Bad Command")
+    field(FRST, "Bad operand")
+    field(FVST, "Communication error")
+    field(SXST, "Not initialized")
+    field(SVST, "Overload error")
+    field(EIST, "Move not allowed")
+    field(NIST, "Command overflow")
+    field(SCAN, "I/O Intr")
+    field(FLNK, "$(P){$(Q)}ReadyCalc")
+}
+
+#record(calcout, "$(P){$(Q)}ReadyCalc") {
+#    field(INPA, "$(P){$(Q)}Status-RAW")
+#    field(CALC, "(A>>5) & 0x1")
+#    field(OUT,  "$(P){$(Q)}Ready PP")
+#}
+#
+#record(bi, "$(P){$(Q)}Ready") {
+#    field(ZNAM, "Not ready.")
+#    field(ONAM, "Ready.")
+#}
+#
+#record(calc, "$(P){$(Q)}StatusCalc") {
+#    field(INPA, "$(P){$(Q)}Status-RAW")
+#    field(CALC, "A & 0xff")
+#}
+
+#===============================================
+# Position readbacks
+
+#record(ai, "$(P){$(Q)-Ax:1}Pos-RB-RAW") {
+#    field(DTYP, "stream")
+#    field(INP,  "@ez4axis.proto getAx1Pos( $(ADDR), ?aA) $(PORT)")
+#    field(SCAN, "2 second")
+#    field(EGU, "$(EGU)")
+#    field(FLNK, "$(P){$(Q)-Ax:1}Pos-RB")
+#}
+
+#record(calc, "$(P){$(Q)-Ax:1}Pos-RB") {
+#    field(INPA, "$(P){$(Q)-Ax:1}Pos-RB-RAW")
+#    field(INPB, "$(P){$(Q)-Ax:1}MRES")
+#    field(CALC, "A*B")
+#    field(EGU, "$(EGU)")
+#}
+
+
+#record(calc, "$(P){$(Q)-Ax:2}Pos-RB") {
+#    field(DTYP, "stream")
+#    field(INP,  "@ez4axis.proto getAx2Pos $(PORT)")
+#    field(EGU, "$(EGU)")
+##    field(FLNK, "$(P){$(Q)-Ax:3}Pos-RB")
+#    field(SCAN, "I/O Intr")
+#}
+#
+#record(calc, "$(P){$(Q)-Ax:3}Pos-RB") {
+#    field(DTYP, "stream")
+#    field(INP,  "@ez4axis.proto getAx3Pos $(PORT)")
+#    field(EGU, "$(EGU)")
+##    field(FLNK, "$(P){$(Q)-Ax:4}Pos-RB")
+#    field(SCAN, "I/O Intr")
+#}
+#
+#record(calc, "$(P){$(Q)-Ax:4}Pos-RB") {
+#    field(DTYP, "stream")
+#    field(INP,  "@ez4axis.proto getAx4Pos() $(PORT)")
+#    field(EGU, "$(EGU)")
+##    field(FLNK, "detInc")
+#    field(SCAN, "I/O Intr")
+#}

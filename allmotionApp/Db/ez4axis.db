@@ -1,0 +1,50 @@
+#===============================================
+# Device enable. Used for position restoration.
+record(bi, "$(P){$(Q)}Enable") {
+}
+
+#===============================================
+# Status
+
+record(stringin, "$(P){$(Q)}Status-RAW") {
+    field(DTYP, "stream")
+    field(INP,  "@ez4axis.proto getDevStsRaw() $(PORT)")
+    field(SCAN, "I/O Intr")
+}
+
+record(mbbi, "$(P){$(Q)}Status") {
+    field(DTYP, "stream")
+    field(INP,  "@ez4axis.proto getDevSts($(P), {$(Q)}, $(ADDR)) $(PORT)")
+#    field(INP,  "@ez4axis.proto getDevSts() $(PORT)")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(SVVL, "7")
+    field(EIVL, "8")
+    field(NIVL, "9")
+    field(ZRST, "Ready")
+    field(ONST, "No error")
+    field(TWST, "Init error")
+    field(THST, "Bad Command")
+    field(FRST, "Bad operand")
+    field(FVST, "Communication error")
+    field(SXST, "Not initialized")
+    field(SVST, "Overload error")
+    field(EIST, "Move not allowed")
+    field(NIST, "Command overflow")
+    field(SCAN, "I/O Intr")
+}
+
+record(fanout, "$(P){$(Q)}PosLoad") {
+    field(LNK0, "$(P){$(Q)-Ax:1}PosLoad.PROC")
+    field(LNK1, "$(P){$(Q)-Ax:2}PosLoad.PROC")
+    field(LNK2, "$(P){$(Q)-Ax:3}PosLoad.PROC")
+    field(LNK3, "$(P){$(Q)-Ax:4}PosLoad.PROC")
+}
+
+record(bi, "$(P){$(Q)}PosSave-Enable") {
+}

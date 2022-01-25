@@ -1,0 +1,14 @@
+record(ao, "$(P){$(Q)-Ax:$(AX)}$(PARAM)-SP") {
+    field(DTYP, "stream")
+    field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), $(CMD-SP)) $(PORT)")
+    field(EGU, "$(EGU)")
+    field(FLNK, "$(P){$(Q)-Ax:$(AX)}$(PARAM)-RB")
+    field(PINI, "YES")
+    info(autosaveFields_pass0, "VAL")
+}
+
+record(ai, "$(P){$(Q)-Ax:$(AX)}$(PARAM)-RB") {
+    field(DTYP, "stream")
+    field(INP,  "@ez4axis.proto getAxParam($(ADDR), $(AX), $(CMD-RB)) $(PORT)")
+    field(EGU, "$(EGU)")
+}

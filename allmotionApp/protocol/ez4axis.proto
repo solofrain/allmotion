@@ -1,0 +1,64 @@
+InTerminator = 0x3 CR LF 0xff;
+OutTerminator = CR;
+ReplyTimeout = 2000;
+
+ax="%(\$1{\$2-Ax:\$3}";
+status = "%(\$1{\$2}STATUS){`|@|O|*}";
+
+#============================================
+
+setAxParam {
+    out "/\$1aM\$2\$3%dR";
+    in "\xff\/0@"
+}
+
+getAxParam {
+    out "/\$1aM\$2R";
+    in "\xff\/0@";
+    out "/\$1\$3";
+    in "\xff\/0`%d"
+}
+
+#============================================
+
+getDevStsRaw {
+    out "\/\$1?aAR";
+    in "\xff\/0%c%*d,%*d,%*d,%*d";
+}
+
+getDevSts {
+    in "\xff\/0%(\$1\$2Status){`|@|A|B|C|E|G|I|K|O|*}%*d,%*d,%*d,%*d";
+}
+
+#============================================
+
+getAx1Pos {
+#    out "\/\$1\$2R";
+    in "\xff\/0%*c%d,%*d,%*d,%*d";
+}
+
+getAx2Pos {
+    in "\xff\/0%*c%*d,%d,%*d,%*d";
+}
+
+getAx3Pos {
+    in "\xff\/0%*c%*d,%*d,%d,%*d";
+}
+
+getAx4Pos {
+    in "\xff\/0%*c%*d,%*d,%*d,%d";
+}
+
+#============================================
+
+stopAx {
+    out "/\$1T\$2";
+    in "\xff\/0@"
+}
+
+stopAll {
+    out "/\$1T";
+    in "\xff\/0@"
+}
+
+#============================================
