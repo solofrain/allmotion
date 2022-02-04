@@ -10,3 +10,4 @@ envPaths
 *.swp
 as/req/allmotion_pass*
 as/save/allmotion_pass*
+!example/det4axis/envPaths
