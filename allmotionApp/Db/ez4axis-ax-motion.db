@@ -54,8 +54,8 @@ record(ao, "$(P){$(Q)-Ax:$(AX)}StopAll") {
 
 #-----------------------------------------
 # Home
-record(ai "$(P){$(Q)-Ax:$(AX)}HomeDist-SP") {
-#   field(DTYP, "stream")
+record(ao, "$(P){$(Q)-Ax:$(AX)}HomeDist-SP") {
+    field(DTYP, "stream")
     field(OUT,  "@ez4axis.proto setAxParam($(ADDR), $(AX), Z) $(PORT)")
 }
 
