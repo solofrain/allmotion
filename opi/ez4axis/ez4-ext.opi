@@ -295,13 +295,6 @@ $(pv_value)</tooltip>
         <confirm_message></confirm_message>
         <description></description>
       </action>
-      <action type="WRITE_PV">
-        <pv_name>$(P){$(Q)-Ax:$(AX)}StopAll.PROC</pv_name>
-        <value>0</value>
-        <timeout>10</timeout>
-        <confirm_message></confirm_message>
-        <description></description>
-      </action>
     </actions>
     <alarm_pulsing>false</alarm_pulsing>
     <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
@@ -648,13 +641,6 @@ $(pv_value)</tooltip>
       <action type="WRITE_PV">
         <pv_name>$(P){$(Q)}PosLoad.PROC</pv_name>
         <value>1</value>
-        <timeout>10</timeout>
-        <confirm_message></confirm_message>
-        <description></description>
-      </action>
-      <action type="WRITE_PV">
-        <pv_name>$(P){$(Q)}PosLoad.PROC</pv_name>
-        <value>0</value>
         <timeout>10</timeout>
         <confirm_message></confirm_message>
         <description></description>
