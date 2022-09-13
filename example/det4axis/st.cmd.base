@@ -1,11 +1,11 @@
-#!/data/epics/base-7.0.6.1/support/synApps_6_1/support/allmotion/bin/linux-x86_64/allmotion
+#!/home/peter/epics/extensions/synApps/support/allmotion/bin/linux-x86_64/allmotion
 
 < envPaths
 
 epicsEnvSet("ENGINEER",  "Ji Li")
 
 epicsEnvSet("EPICS_CA_AUTO_ADDR_LIST",         "NO")
-epicsEnvSet("EPICS_CA_ADDR_LIST",              "130.199.195.255")
+epicsEnvSet("EPICS_CA_ADDR_LIST",              "10.2.255.255")
 #epicsEnvSet("EPICS_CAS_AUTO_BEACON_ADDR_LIST", "NO")
 #epicsEnvSet("EPICS_CAS_BEACON_ADDR_LIST",      "130.199.195.255")
 #epicsEnvSet("EPICS_CAS_INTF_ADDR_LIST",        "130.199.195.176")

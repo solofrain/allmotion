@@ -22,18 +22,18 @@
 # the CONFIG_SITE file.
 
 # Variables and paths to dependent modules
-SUPPORT=/data/epics/base-7.0.6.1/support/synApps_6_1/support
+SUPPORT=/home/peter/epics/extensions/synApps/support
 
-CALC=$(SUPPORT)/calc-R3-7-3
-ASYN=$(SUPPORT)/asyn-R4-36
-STREAMDEVICE=$(SUPPORT)/StreamDevice-2-8-9
-AUTOSAVE=$(SUPPORT)/autosave-R5-10
+CALC=$(SUPPORT)/calc-R3-7-4
+ASYN=$(SUPPORT)/asyn-R4-42
+STREAMDEVICE=$(SUPPORT)/StreamDevice-2-8-16
+AUTOSAVE=$(SUPPORT)/autosave-R5-10-2
 
 # If using the sequencer, point SNCSEQ at its top directory:
 #SNCSEQ = $(MODULES)/seq-ver
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
-EPICS_BASE = /data/epics/base-7.0.6.1
+EPICS_BASE=/home/peter/epics/base-7.0.6.1
 
 # Set RULES here if you want to use build rules from somewhere
 # other than EPICS_BASE:

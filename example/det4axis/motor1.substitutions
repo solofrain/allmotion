@@ -15,6 +15,18 @@ pattern
 { 1  , "Accl"      , "L"    , "?L"   , "$(Egu$(AX))/sec^2" }
 { 1  , "HoldCurr"  , "h"    , "?h"   , "% (2A)"            }
 { 1  , "MoveCurr"  , "m"    , "?m"   , "% (2A)"            }
+{ 2  , "VeloMax"   , "V"    , "?2"   , "$(Egu$(AX))/sec"   }
+{ 2  , "VeloStart" , "v"    , "?1"   , "$(Egu$(AX))/sec"   }
+{ 2  , "VeloStop"  , "c"    , "?3"   , "$(Egu$(AX))/sec"   }
+{ 2  , "Accl"      , "L"    , "?L"   , "$(Egu$(AX))/sec^2" }
+{ 2  , "HoldCurr"  , "h"    , "?h"   , "% (2A)"            }
+{ 2  , "MoveCurr"  , "m"    , "?m"   , "% (2A)"            }
+{ 3  , "VeloMax"   , "V"    , "?2"   , "$(Egu$(AX))/sec"   }
+{ 3  , "VeloStart" , "v"    , "?1"   , "$(Egu$(AX))/sec"   }
+{ 3  , "VeloStop"  , "c"    , "?3"   , "$(Egu$(AX))/sec"   }
+{ 3  , "Accl"      , "L"    , "?L"   , "$(Egu$(AX))/sec^2" }
+{ 3  , "HoldCurr"  , "h"    , "?h"   , "% (2A)"            }
+{ 3  , "MoveCurr"  , "m"    , "?m"   , "% (2A)"            }
 }
 
 file "$(ALLMOTION)/db/ez4axis-ax-motion.db"
